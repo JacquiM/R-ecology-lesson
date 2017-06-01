@@ -57,10 +57,13 @@ database using **`dplyr`**, using both the **`dplyr`**'s verb syntax and the SQL
 In order to connect with the database and execute the correct queries, we need to install dplyr, RSQLite and devtools.
 
 ```
-{r install, results='markup', purl=FALSE}
 install.packages("dplyr")
 ```
+
+```
 install.packages("RSQLite")
+```
+
 ```
 install.packages("devtools")
 ```
