@@ -77,7 +77,7 @@ The SQLite database is contained in a single file `portal_mammals.sqlite`
 that you generated during the SQL lesson. If you don't have it, you can download
 it from Figshare into the `data` subdirectory using:
 
-```{r downloads, results='markup', purl=FALSE}
+```
 dir.create("data", showWarnings = FALSE)
 ```
 Open your browser and download the database from: https://ndownloader.figshare.com/files/2292171
