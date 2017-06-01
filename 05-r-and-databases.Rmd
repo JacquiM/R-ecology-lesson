@@ -53,6 +53,22 @@ entries. If you need these functionalities, you will need to use additional R
 packages (e.g., **`RSQLite`**). Here we will demonstrate how to interact with a
 database using **`dplyr`**, using both the **`dplyr`**'s verb syntax and the SQL syntax.
 
+### Installing the correct packages.
+In order to connect with the database and execute the correct queries, we need to install dplyr, RSQLite and devtools.
+
+```
+{r install, results='markup', purl=FALSE}
+install.packages("dplyr")
+```
+```
+install.packages("RSQLite")
+{r installrsqlite, results='markup', purl=FALSE}
+```
+```
+install.packages("devtools")
+{r installdev, results='markup', purl=FALSE}
+```
+
 ### The portal_mammals database
 
 We will continue to explore the `surveys` data you are already familiar with
@@ -62,11 +78,12 @@ The SQLite database is contained in a single file `portal_mammals.sqlite`
 that you generated during the SQL lesson. If you don't have it, you can download
 it from Figshare into the `data` subdirectory using:
 
-```{r download, eval = FALSE, purl=FALSE}
+```{r downloads, results='markup', purl=FALSE}
 dir.create("data", showWarnings = FALSE)
-download.file(url = "https://ndownloader.figshare.com/files/2292171",
-              destfile = "data/portal_mammals.sqlite", mode = "wb")
 ```
+Open your browser and download the database from: https://ndownloader.figshare.com/files/2292171
+Locate the downloaded database, copy it and paste it in the newly created "data" file. This is usually found in documents.
+
 
 ## Connecting to databases with **`dplyr`**
 
@@ -315,6 +332,16 @@ The `plot_id` column also features in the `surveys` table:
 
 ```{r surveys, results='markup', purl=FALSE}
 surveys
+```
+
+The taxa of a species, from the species dataset, can be joined to the year in which it was surveyed, from the survey dataset.
+
+```{r surveys, results='markup', purl=FALSE}
+species <- tbl(mammals, "species")
+species %>%
+  filter(taxa == "Rodent") %>%
+  inner_join(surveys)%>%
+  select(taxa, year)
 ```
 
 Because `plot_id` is listed in both tables, we can use it to look up matching
