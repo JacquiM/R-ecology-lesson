@@ -60,13 +60,9 @@ In order to connect with the database and execute the correct queries, we need t
 {r install, results='markup', purl=FALSE}
 install.packages("dplyr")
 ```
-```
 install.packages("RSQLite")
-{r installrsqlite, results='markup', purl=FALSE}
-```
 ```
 install.packages("devtools")
-{r installdev, results='markup', purl=FALSE}
 ```
 
 ### The portal_mammals database
